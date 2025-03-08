@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Ovan Sev Farel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .card {
+            background: white;
+            width: 350px;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            display: block;
+            margin: 0 auto 10px;
+            background: url('https://files.catbox.moe/d2w8lm.jpg') center/cover no-repeat;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: gray;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: spin 2s linear infinite;
+        }
+
+        .social-icons a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .follow-btn {
+            background: #ff007f;
+            color: white;
+        }
+
+        .message-btn {
+            background: #007bff;
+            color: white;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+            color: gray;
+        }
+
+        .stats div {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="profile-img"></div>
+        <h2>Ovan Sev Farel</h2>
+        <p>Modding & Programmer</p>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ovan.sirait.7" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Facebook_Logo_2023.png" alt="Facebook">
+            </a>
+            <a href="https://t.me/OwnTelegramX" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+            </a>
+            <a href="https://instagram.com/accelgyz" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+        </div>
+
+        <div class="buttons">
+            <button class="follow-btn" onclick="window.open('https://instagram.com/accelgyz', '_blank')">Follow</button>
+            <button class="message-btn" onclick="window.open('https://t.me/OwnTelegramX', '_blank')">Message</button>
+        </div>
+
+        <div class="stats">
+            <div onclick="increaseCount('likeCount')">❤️ <span id="likeCount">15.7k</span></div>
+            <div onclick="increaseCount('commentCount')">💬 <span id="commentCount">7.5k</span></div>
+            <div onclick="shareProfile()">🔗 Share</div>
+        </div>
+    </div>
+
+    <script>
+        function increaseCount(id) {
+            let email = prompt("Masukkan email Anda:");
+            if (email) {
+                let count = document.getElementById(id);
+                count.textContent = parseInt(count.textContent.replace('k', '')) + 1;
+                alert("Terima kasih! Interaksi Anda telah ditambahkan.");
+            } else {
+                alert("Anda harus memasukkan email untuk melanjutkan.");
+            }
+        }
+
+        function shareProfile() {
+            let shareText = "Profil Ovan Sev Farel\nInstagram: https://instagram.com/accelgyz\nTelegram: https://t.me/OwnTelegramX";
+            navigator.clipboard.writeText(shareText);
+            alert("Link profil telah disalin ke clipboard!");
+        }
+    </script>
+
+</body>
+</html>
