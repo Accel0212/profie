@@ -39,25 +39,22 @@
             display: block;
             margin: 0 auto 10px;
             background: url('https://files.catbox.moe/d2w8lm.jpg') center/cover no-repeat;
-            animation: popIn 1.2s ease-out;
+            animation: bounceIn 1.2s ease-out infinite alternate;
         }
 
-        @keyframes popIn {
-            from {
-                transform: scale(0);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+        @keyframes bounceIn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
-        .name-container {
+        /* Efek Mengetik */
+        .typing-text {
             display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
             border-right: 3px solid black;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
             animation: typing 2s steps(15, end) forwards, blink 0.7s infinite;
         }
 
@@ -70,38 +67,7 @@
             50% { border-color: transparent; }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateX(-30px);
-            animation: fadeIn 1.5s ease-out forwards 1.5s;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        h2 {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-            display: inline-block;
-        }
-
-        p {
-            color: gray;
-            font-size: 15px;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
+        /* Animasi Ikon Sosial Media */
         .social-icons {
             display: flex;
             justify-content: center;
@@ -119,35 +85,20 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            opacity: 0;
-            animation: fadeSlideIn 1s ease-out forwards;
+            animation: rotateIcon 2s infinite alternate;
         }
 
-        .social-icons a:nth-child(1) { animation-delay: 2s; }
-        .social-icons a:nth-child(2) { animation-delay: 2.5s; }
-        .social-icons a:nth-child(3) { animation-delay: 3s; }
+        @keyframes rotateIcon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(10deg); }
+        }
 
         .social-icons a:hover {
-            transform: scale(1.2);
+            transform: scale(1.3);
+            transition: 0.3s;
         }
 
-        .social-icons a img {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-        }
-
-        @keyframes fadeSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Animasi Tombol */
         .buttons {
             display: flex;
             justify-content: space-around;
@@ -164,33 +115,45 @@
             transition: 0.3s ease;
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            animation: fadeSlideIn 1s ease-out forwards;
+            color: white;
+            animation: pulse 1.5s infinite alternate;
         }
 
-        .buttons button:nth-child(1) { animation-delay: 3.5s; }
-        .buttons button:nth-child(2) { animation-delay: 4s; }
-
         .follow-btn {
-            background: #ff007f;
-            color: white;
+            background: linear-gradient(45deg, #ff007f, #ff4d4d);
             box-shadow: 0 4px 8px rgba(255, 0, 127, 0.5);
         }
 
-        .follow-btn:hover {
-            background: #e60073;
-        }
-
         .message-btn {
-            background: #007bff;
-            color: white;
+            background: linear-gradient(45deg, #007bff, #00c6ff);
             box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
         }
 
-        .message-btn:hover {
-            background: #0056b3;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
+        /* Animasi Musik */
+        .audio-container {
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .audio-container audio {
+            width: 100%;
+            border-radius: 10px;
+            animation: vibrate 2s infinite;
+        }
+
+        @keyframes vibrate {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(1deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Animasi Teks Button */
         .stats {
             display: flex;
             justify-content: space-around;
@@ -205,19 +168,14 @@
             background: #f8f9fa;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
-            opacity: 0;
-            animation: fadeSlideIn 1s ease-out forwards;
+            transition: transform 0.3s ease-in-out;
+            animation: floatText 2s infinite alternate;
         }
 
-        .stats div:nth-child(1) { animation-delay: 4.5s; }
-        .stats div:nth-child(2) { animation-delay: 5s; }
-        .stats div:nth-child(3) { animation-delay: 5.5s; }
-
-        .stats div:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        @keyframes floatText {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-5px); }
         }
 
         .stats div:last-child {
@@ -226,9 +184,6 @@
             font-weight: bold;
         }
 
-        .stats div:last-child:hover {
-            background: #ffcc00;
-        }
     </style>
 </head>
 <body>
@@ -236,9 +191,9 @@
     <div class="card">
         <div class="profile-img"></div>
 
-        <h2 class="name-container">Ovan Sev Farel</h2>
+        <h2><span class="typing-text">Ovan Sev Farel</span></h2>
 
-        <p class="fade-in">Modding & Programmer</p>
+        <p>Modding & Programmer</p>
 
         <div class="social-icons">
             <a href="https://www.facebook.com/ovan.sirait.7" target="_blank">
@@ -261,6 +216,13 @@
             <div>❤️ 279K</div>
             <div>💬 1.8M</div>
             <div onclick="alert('Link profil telah disalin!')">🔗 Share</div>
+        </div>
+
+        <div class="audio-container">
+            <audio controls>
+                <source src="https://files.catbox.moe/28pc2r.mp3" type="audio/mp3">
+                Browser Anda tidak mendukung tag audio.
+            </audio>
         </div>
     </div>
 
