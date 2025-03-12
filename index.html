@@ -38,7 +38,7 @@
             display: block;
             margin: 0 auto 10px;
             background: url('https://files.catbox.moe/d2w8lm.jpg') center/cover no-repeat;
-            animation: popIn 1.5s ease-out;
+            animation: popIn 1.2s ease-out;
         }
 
         @keyframes popIn {
@@ -118,8 +118,20 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            animation: spin 3s linear infinite;
-            transition: transform 0.3s ease-in-out;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease-out forwards;
+        }
+
+        .social-icons a:nth-child(1) {
+            animation-delay: 2s;
+        }
+
+        .social-icons a:nth-child(2) {
+            animation-delay: 2.5s;
+        }
+
+        .social-icons a:nth-child(3) {
+            animation-delay: 3s;
         }
 
         .social-icons a:hover {
@@ -132,9 +144,15 @@
             border-radius: 50%;
         }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .buttons {
@@ -153,21 +171,16 @@
             transition: 0.3s ease;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease-out forwards;
         }
 
-        .buttons button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.4s ease-in-out;
+        .buttons button:nth-child(1) {
+            animation-delay: 3.5s;
         }
 
-        .buttons button:hover::before {
-            left: 100%;
+        .buttons button:nth-child(2) {
+            animation-delay: 4s;
         }
 
         .follow-btn {
@@ -206,6 +219,20 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease-out forwards;
+        }
+
+        .stats div:nth-child(1) {
+            animation-delay: 4.5s;
+        }
+
+        .stats div:nth-child(2) {
+            animation-delay: 5s;
+        }
+
+        .stats div:nth-child(3) {
+            animation-delay: 5.5s;
         }
 
         .stats div:hover {
@@ -246,24 +273,16 @@
         </div>
 
         <div class="buttons">
-            <button class="follow-btn" onclick="window.open('https://instagram.com/accelgyz', '_blank')">Follow</button>
-            <button class="message-btn" onclick="window.open('https://t.me/OwnTelegramX', '_blank')">Message</button>
+            <button class="follow-btn">Follow</button>
+            <button class="message-btn">Message</button>
         </div>
 
         <div class="stats">
             <div>❤️ 279K</div>
             <div>💬 1.8M</div>
-            <div onclick="shareProfile()">🔗 Share</div>
+            <div onclick="alert('Link profil telah disalin!')">🔗 Share</div>
         </div>
     </div>
-
-    <script>
-        function shareProfile() {
-            let shareText = "Profil Ovan Sev Farel\nInstagram: https://instagram.com/accelgyz\nTelegram: https://t.me/OwnTelegramX";
-            navigator.clipboard.writeText(shareText);
-            alert("Link profil telah disalin ke clipboard!");
-        }
-    </script>
 
 </body>
 </html>
