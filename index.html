@@ -39,7 +39,6 @@
             background: url('https://files.catbox.moe/d2w8lm.jpg') center/cover no-repeat;
         }
 
-        /* Animasi mengetik untuk nama */
         .name-container {
             display: inline-block;
             overflow: hidden;
@@ -57,7 +56,6 @@
             50% { border-color: transparent; }
         }
 
-        /* Animasi muncul dari kiri */
         .fade-in {
             opacity: 0;
             transform: translateX(-30px);
@@ -65,14 +63,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         h2 {
@@ -114,26 +106,14 @@
         .social-icons a:nth-child(2) { animation-delay: 0.4s; }
         .social-icons a:nth-child(3) { animation-delay: 0.6s; }
 
-        .social-icons a img {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-        }
-
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
         @keyframes drop {
-            from {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-100px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .buttons {
@@ -150,6 +130,13 @@
             font-size: 16px;
             font-weight: bold;
             transition: 0.3s ease;
+            transform: scale(0);
+            animation: zoomIn 1s ease-out forwards 2.5s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .follow-btn {
@@ -158,9 +145,7 @@
             box-shadow: 0 4px 8px rgba(255, 0, 127, 0.5);
         }
 
-        .follow-btn:hover {
-            background: #e60073;
-        }
+        .follow-btn:hover { background: #e60073; }
 
         .message-btn {
             background: #007bff;
@@ -168,9 +153,7 @@
             box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
         }
 
-        .message-btn:hover {
-            background: #0056b3;
-        }
+        .message-btn:hover { background: #0056b3; }
 
         .stats {
             display: flex;
@@ -186,6 +169,14 @@
             background: #f8f9fa;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeUp 1s ease-out forwards 3s;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .stats div:last-child {
@@ -195,8 +186,17 @@
             font-weight: bold;
         }
 
-        .stats div:last-child:hover {
-            background: #ffcc00;
+        .stats div:last-child:hover { background: #ffcc00; }
+
+        /* Animasi bounce saat tombol Share diklik */
+        .stats div:last-child:active {
+            animation: bounce 0.4s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -205,27 +205,19 @@
     <div class="card">
         <div class="profile-img"></div>
 
-        <!-- Nama dengan animasi mengetik -->
         <h2 class="name-container">Ovan Sev Farel</h2>
 
-        <!-- Deskripsi dengan animasi fade-in -->
         <p class="fade-in">Modding & Programmer</p>
 
         <div class="social-icons">
-            <a href="https://www.facebook.com/ovan.sirait.7" target="_blank">
-                <img src="https://files.catbox.moe/adecrk.jpg" alt="Facebook">
-            </a>
-            <a href="https://t.me/OwnTelegramX" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-            </a>
-            <a href="https://instagram.com/accelgyz" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-            </a>
+            <a href="#"><img src="https://files.catbox.moe/adecrk.jpg" alt="Facebook"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
         </div>
 
         <div class="buttons">
-            <button class="follow-btn" onclick="window.open('https://instagram.com/accelgyz', '_blank')">Follow</button>
-            <button class="message-btn" onclick="window.open('https://t.me/OwnTelegramX', '_blank')">Message</button>
+            <button class="follow-btn">Follow</button>
+            <button class="message-btn">Message</button>
         </div>
 
         <div class="stats">
